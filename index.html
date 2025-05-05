@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Capturando sua localização...</h2>
+    <script>
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        // Troque pela URL do seu app FlutterFlow
+        window.location.href = `https://SEU_APP.web.app/location?lat=${lat}&lon=${lon}`;
+      }, function(error) {
+        document.body.innerHTML += "<p>Erro: " + error.message + "</p>";
+      });
+    </script>
+  </body>
+</html>
