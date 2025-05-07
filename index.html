@@ -1,17 +1,23 @@
-<!DOCTYPE html>
+<!DOCTYPE html>S
 <html>
+  <head>
+  <title>Capturando Localização</title>
+</head>
   <body>
-    <h2>Capturando sua localização...</h2>
-    <script>
-      navigator.geolocation.getCurrentPosition(function(position) {
+  <h2>Capturando sua localização...</h2>
+  <p id="status">Aguarde, estamos localizando você.</p>
+  <script>
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
-
-        // Troque pela URL do seu app FlutterFlow
-       window.location.href = `https://restore-3ht8nw.flutterflow.app/location?lat=${lat}&lon=${lon}`;
-      }, function(error) {
-        document.body.innerHTML += "<p>Erro: " + error.message + "</p>";
-      });
-    </script>
-  </body>
+        window.location.href = `https://restore-3ht8nw.flutterflow.app/location?lat=${lat}&lon=${lon}`;
+      },
+      function (error) {
+        document.getElementById("status").innerHTML =
+          "<p>Erro ao capturar localização: " + error.message + "</p>";
+      }
+    );
+  </script>
+</body>
 </html>
